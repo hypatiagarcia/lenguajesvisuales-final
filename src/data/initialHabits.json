@@ -1,0 +1,42 @@
+[
+  {
+    "id": "1",
+    "title": "Meditación Matutina",
+    "description": "10 minutos de mindfulness antes de empezar el día.",
+    "category": "mindfulness",
+    "frequency": "daily",
+    "active": true,
+    "createdAt": "2024-01-01T00:00:00.000Z",
+    "completedDates": []
+  },
+  {
+    "id": "2",
+    "title": "Lectura Profunda",
+    "description": "Leer al menos 20 páginas de un libro de no ficción.",
+    "category": "learning",
+    "frequency": "daily",
+    "active": true,
+    "createdAt": "2024-01-01T00:00:00.000Z",
+    "completedDates": []
+  },
+  {
+    "id": "3",
+    "title": "Beber 2L de Agua",
+    "description": "Mantenerse hidratado durante todo el día.",
+    "category": "health",
+    "frequency": "daily",
+    "active": true,
+    "createdAt": "2024-01-01T00:00:00.000Z",
+    "completedDates": []
+  },
+  {
+    "id": "4",
+    "title": "Planificación del Día",
+    "description": "Organizar las tareas prioritarias.",
+    "category": "productivity",
+    "frequency": "daily",
+    "active": true,
+    "createdAt": "2024-01-01T00:00:00.000Z",
+    "completedDates": []
+  }
+]
