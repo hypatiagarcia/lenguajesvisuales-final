@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { LayoutDashboard, Plus, CheckCircle2, XCircle, BarChart3, Filter } from 'lucide-react';
+import { LayoutDashboard, Plus, CheckCircle2, XCircle, BarChart3, Search } from 'lucide-react';
 import { HabitList } from './components/HabitList';
 import { HabitForm } from './components/HabitForm';
 import { ProgressChart } from './components/ProgressChart';
@@ -8,13 +8,18 @@ import { useHabits } from './hooks/useHabits';
 function App() {
   const { habits, addHabit, toggleHabit, deleteHabit, getWeeklyProgress } = useHabits();
   const [filter, setFilter] = useState<'all' | 'active' | 'archived'>('active');
+  const [searchTerm, setSearchTerm] = useState('');
   const [isFormOpen, setIsFormOpen] = useState(false);
 
   const filteredHabits = habits.filter(habit => {
-    if (filter === 'all') return true;
-    if (filter === 'active') return habit.active;
-    if (filter === 'archived') return !habit.active;
-    return true;
+    const matchesFilter = 
+      filter === 'all' ? true :
+      filter === 'active' ? habit.active :
+      !habit.active;
+    
+    const matchesSearch = habit.title.toLowerCase().includes(searchTerm.toLowerCase());
+
+    return matchesFilter && matchesSearch;
   });
 
   return (
@@ -64,21 +69,35 @@ function App() {
 
         {/* Main Content */}
         <main className="bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden">
-          <div className="p-4 border-b border-slate-100 flex items-center justify-between bg-slate-50/50">
+          <div className="p-4 border-b border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-slate-50/50">
             <h2 className="font-semibold text-slate-700">Mis Hábitos</h2>
-            <div className="flex items-center gap-2 bg-white p-1 rounded-lg border border-slate-200">
-              <button 
-                onClick={() => setFilter('active')}
-                className={`px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${filter === 'active' ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600 hover:bg-slate-50'}`}
-              >
-                Activos
-              </button>
-              <button 
-                onClick={() => setFilter('archived')}
-                className={`px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${filter === 'archived' ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600 hover:bg-slate-50'}`}
-              >
-                Archivados
-              </button>
+            
+            <div className="flex flex-col sm:flex-row gap-3">
+              <div className="relative">
+                <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
+                <input 
+                  type="text" 
+                  placeholder="Buscar hábito..." 
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="pl-9 pr-4 py-1.5 rounded-lg border border-slate-200 text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none w-full sm:w-48"
+                />
+              </div>
+
+              <div className="flex items-center gap-2 bg-white p-1 rounded-lg border border-slate-200 self-start sm:self-auto">
+                <button 
+                  onClick={() => setFilter('active')}
+                  className={`px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${filter === 'active' ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600 hover:bg-slate-50'}`}
+                >
+                  Activos
+                </button>
+                <button 
+                  onClick={() => setFilter('archived')}
+                  className={`px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${filter === 'archived' ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600 hover:bg-slate-50'}`}
+                >
+                  Archivados
+                </button>
+              </div>
             </div>
           </div>
           

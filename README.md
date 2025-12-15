@@ -10,7 +10,9 @@ Este proyecto es una aplicación web para el seguimiento de hábitos diarios, di
 *   **Gestión de Hábitos (CRUD):** Crear nuevos hábitos con categorías y frecuencia.
 *   **Seguimiento Diario:** Marcar hábitos como completados con un solo clic.
 *   **Visualización de Progreso:** Gráfico de barras interactivo que muestra el porcentaje de cumplimiento de los últimos 7 días.
-*   **Filtrado:** Alternar entre hábitos activos y archivados para mantener la lista limpia.
+*   **Búsqueda y Filtrado:** 
+    *   Barra de búsqueda para encontrar hábitos por nombre.
+    *   Filtros para alternar entre hábitos activos y archivados.
 *   **Persistencia de Datos:** Los datos se guardan automáticamente en el almacenamiento local del navegador (LocalStorage), simulando una base de datos persistente.
 *   **Diseño Responsivo:** Interfaz adaptada a dispositivos móviles y de escritorio.
 
@@ -56,8 +58,12 @@ Sigue estos pasos para ejecutar el proyecto en tu máquina local:
 
 ## Cumplimiento de Requerimientos (Rúbrica)
 
-*   **Funcionalidad (10 pts):** Implementa CRUD completo, filtros, gráficos y persistencia simulada.
-*   **Calidad del Código (5 pts):** Uso de Hooks personalizados, componentes modulares y TypeScript.
-*   **Interfaz y Diseño (5 pts):** Diseño limpio usando Tailwind CSS.
-*   **Uso de Datos (3 pts):** Carga inicial desde JSON y persistencia en LocalStorage.
-*   **Documentación (7 pts):** Este archivo README detalla el uso y la instalación.
+*   **Funcionalidad (10 pts):** 
+    *   **CRUD:** Creación, Lectura, Actualización (Completar/Archivar) y Eliminación (Archivar).
+    *   **Filtros y Búsqueda:** Filtrado por estado (Activo/Archivado) y búsqueda por texto en tiempo real.
+    *   **Gráficos:** Visualización del progreso semanal.
+    *   **Formularios:** Validación básica en la creación de hábitos.
+*   **Calidad del Código (5 pts):** Uso de Hooks personalizados (`useHabits`), componentes modulares, TypeScript estricto y estructura limpia.
+*   **Interfaz y Diseño (5 pts):** Diseño moderno y responsivo con Tailwind CSS, feedback visual al completar tareas.
+*   **Uso de Datos (3 pts):** Carga inicial desde `initialHabits.json` y persistencia de estado en `LocalStorage`.
+*   **Documentación (7 pts):** README completo con instrucciones de instalación, ejecución y descripción de características.
